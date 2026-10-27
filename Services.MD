@@ -1,0 +1,63 @@
+# AWS Services Reference
+
+Every AWS service and feature used in the AIP-C01 Hands-on Labs series: what it's for, when to use it, when not to, and the exam wording that points to it. Grows as the series does.
+
+## Models and model access
+
+How your application reaches a foundation model, and how that model is served.
+
+| Service | Purpose | Use it when | Not recommended when | Exam cue | First used |
+| --- | --- | --- | --- | --- | --- |
+| **Amazon Bedrock** | Fully managed access to foundation models from many providers through one API | You want to use models without managing any infrastructure | The model you need isn't offered, or you need full control of the serving stack (use SageMaker AI) | "fully managed", "least operational overhead" | Skill 1.1.1 |
+| **Converse API** | One request format for every Bedrock chat model, with conversation history and tool use | Switching models or providers without code changes; multi-turn chat | Embedding or image-generation models (call them with InvokeModel) | "switch models without code changes" | Skill 1.1.1 |
+| **Cross-Region inference** | An inference profile spreads requests across Regions in a geography (us., eu.) or globally | Throttling at peak traffic; more throughput with no setup | Data must stay in one Region: use in-Region access, not a cross-Region profile | "throttling during peaks", "least effort to increase throughput" | Skill 1.1.1 |
+| **Provisioned Throughput** | Reserved model capacity (model units), billed per hour whether used or not | Steady high volume that needs guaranteed throughput; serving some custom models | Spiky or low traffic: you pay for idle capacity | "guaranteed / consistent throughput" | Skill 1.1.1 |
+| **Batch inference** | Processes a file of prompts from S3 asynchronously, at a lower price than on-demand | Large offline jobs where nobody waits for the answer | Interactive or real-time requests | "overnight", "millions of records", "lowest cost" | Skill 1.1.1 |
+| **Amazon SageMaker AI endpoints** | Host your own or open-source models on instances you choose | Model isn't in Bedrock; custom containers; control over hardware | A Bedrock model fits and the team wants the least operations | "full control", "custom container" | Skill 1.1.1 |
+
+## Amazon Bedrock features
+
+Managed building blocks on top of the models.
+
+| Service | Purpose | Use it when | Not recommended when | Exam cue | First used |
+| --- | --- | --- | --- | --- | --- |
+| **Knowledge Bases** | Managed RAG: ingests documents, chunks and embeds them, stores vectors and retrieves passages | Answers must come from your own documents, which change over time | The task needs actions, not answers (Agents), or new behaviour or style (fine-tuning) | "internal documents", "cite sources" | Skill 1.1.1 |
+| **Agents** | The model plans steps and calls APIs (action groups) and knowledge bases | Multi-step tasks that take actions, such as look up an order then refund it | The steps are fixed in advance (Flows, Step Functions) or it's plain Q&A | "call APIs", "take actions" | Skill 1.1.1 |
+| **Guardrails** | Policies on inputs and outputs: content filters, denied topics, PII, word filters, grounding checks | One consistent safety policy across apps and models | Controlling who can call a model (that's IAM) | "block harmful content", "redact PII in responses" | Skill 1.1.1 |
+| **Flows** | Visual workflows that link prompts, models, knowledge bases, Lambda and conditions | A fixed GenAI pipeline built with little code | Long-running orchestration across many AWS services or waits for humans (Step Functions) | "chain prompts", "low-code workflow" | Skill 1.1.1 |
+| **Prompt Management** | Stores, versions and shares prompt templates with variables | Governing prompts across teams; changing prompts without redeploying | Throwaway experiments | "version and reuse prompts" | Skill 1.1.1 |
+
+## Application and integration
+
+The services around the model that receive requests and run the steps.
+
+| Service | Purpose | Use it when | Not recommended when | Exam cue | First used |
+| --- | --- | --- | --- | --- | --- |
+| **Amazon API Gateway** | Managed front door for REST, HTTP and WebSocket APIs, with auth and throttling | One stable, secured endpoint for clients; WebSocket for streamed chat | Long, non-streamed generations through REST APIs: the default integration timeout is 29 seconds | "expose securely", "throttle per client" | Skill 1.1.1 |
+| **AWS Lambda** | Runs code on demand with no servers to manage | Glue code that calls Bedrock; agent action groups; event handling | Work longer than 15 minutes, or always-on servers | "serverless", "event-driven" | Skill 1.1.1 |
+| **AWS Step Functions** | Orchestrates multi-step workflows with retries, branches, parallel steps and waits | Long or multi-service workflows, error handling, human approval | A single quick model call | "orchestrate", "human-in-the-loop" | Skill 1.1.1 |
+| **Amazon EventBridge** | Routes events between services and runs schedules | React when something happens (a document arrives) or run nightly jobs | Synchronous request and response | "when a file arrives", "on a schedule" | Skill 1.1.1 |
+
+## Data and storage
+
+Where documents, state and vectors live.
+
+| Service | Purpose | Use it when | Not recommended when | Exam cue | First used |
+| --- | --- | --- | --- | --- | --- |
+| **Amazon S3** | Durable object storage | Source documents for knowledge bases; batch inputs and outputs; logs | Fast lookups by key, such as session state (DynamoDB) | "documents", "data lake" | Skill 1.1.1 |
+| **Amazon DynamoDB** | Serverless key-value database with millisecond latency | Conversation history, session state, user preferences | Similarity search over embeddings; ad hoc analytics | "session state", "chat history" | Skill 1.1.1 |
+| **OpenSearch Serverless (vector)** | Vector search plus keyword (hybrid) search, managed | Low-latency semantic or hybrid search at scale | Small or cost-first workloads: it has a minimum capacity charge | "hybrid search", "low latency at scale" | Skill 1.1.1 |
+| **Amazon S3 Vectors** | Stores and queries vectors inside S3 at low cost | Large vector sets, cost first, moderate query rates | Highest query rates at lowest latency, or keyword plus vector search | "lowest-cost vector storage" | Skill 1.1.1 |
+| **Aurora PostgreSQL with pgvector** | Vectors next to relational data in PostgreSQL | The team already runs PostgreSQL; queries join vectors with tables | No relational need and the team wants a fully managed vector service | "already using PostgreSQL" | Skill 1.1.1 |
+
+## Observability and audit
+
+How you see what the application and the models are doing.
+
+| Service | Purpose | Use it when | Not recommended when | Exam cue | First used |
+| --- | --- | --- | --- | --- | --- |
+| **Amazon CloudWatch** | Metrics, logs, alarms and dashboards | Tracking latency, invocations, throttles and token counts; alarming on them | Auditing who called which API (CloudTrail) | "monitor", "alarm on" | Skill 1.1.1 |
+| **Bedrock model invocation logging** | Logs full request and response payloads to CloudWatch Logs or S3; off by default | Debugging prompts, reviewing quality, keeping records | Payloads hold data you mustn't store: restrict access or mask it first | "log prompts and responses" | Skill 1.1.1 |
+| **AWS CloudTrail** | Records API calls: who did what, and when | Security audit and governance | Seeing prompt and response content (invocation logging) | "audit who invoked the model" | Skill 1.1.1 |
+
+_Independent study resource, not affiliated with AWS. Check the AWS documentation for current limits and features._
