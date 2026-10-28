@@ -1,24 +1,21 @@
-# Domain 1, Task 1.1: Analyze requirements and design GenAI solutions
+# Domain 1 · Task 1.1: Analyze requirements and design GenAI solutions
 
-Lab files for the four Medium posts covering Task 1.1. Region: **us-west-2**.
+Companion files for the four Medium posts on Task 1.1 of the AIP-C01 exam guide. Region: **us-west-2**.
 
-| Post | Skill | Format | Folder |
+| Post | Medium title | Type | Lab folder |
 | --- | --- | --- | --- |
-| 1 | 1.1.1 Turning requirements into an architecture | Notes | — |
-| 2 | 1.1.2 Proving it works: a GenAI proof of concept | Lab, ~35 min | [`skill-1.1.2-poc`](skill-1.1.2-poc) |
-| 3 | 1.1.3 Reviewing designs with the Generative AI Lens | Lab, ~30 min | [`skill-1.1.3-wa-lens`](skill-1.1.3-wa-lens) |
-| 4 | Task 1.1 exam notes | Notes | — |
+| 1 | AIP-C01 Skill 1.1.1: From Requirements to Architecture | Notes | — |
+| 2 | AIP-C01 Skill 1.1.2: Prove It Works with a GenAI Proof of Concept | Lab, ~35 min | [`skill-1.1.2-poc`](skill-1.1.2-poc) |
+| 3 | AIP-C01 Skill 1.1.3: Review It with the Generative AI Lens | Lab, ~30 min | [`skill-1.1.3-wa-lens`](skill-1.1.3-wa-lens) |
+| 4 | AIP-C01 Task 1.1 Exam Notes: Analyze Requirements and Design GenAI Solutions | Exam notes | — |
 
-## Skill 1.1.2 files
+Notes and exam-notes posts have no files here; everything you need is in the post.
 
-- `returns-policy.md`: the policy the assistant answers from (same document as the chunking lab)
-- `golden_set.json`: 8 questions, each with the phrases a correct answer must contain
-- `poc_harness.py`: runs the golden set against two candidate models and checks accuracy, p90 latency and cost against exit criteria. Fill in `PRICES` from the Amazon Bedrock pricing page to enable the cost check.
+## Lab order
 
-```bash
-python poc_harness.py
-```
+Do the Skill 1.1.2 lab first. The Skill 1.1.3 lab reviews the proof of concept you build there.
 
-## Skill 1.1.3 files
+## Clean up
 
-- `README.md`: step-by-step for importing the Generative AI Lens into the AWS Well-Architected Tool and reviewing the PoC with it
+- **Skill 1.1.2:** nothing to delete. The lab only calls models on demand.
+- **Skill 1.1.3:** delete the `returns-assistant-poc` workload, then the Generative AI Lens custom lens. Neither has a cost.

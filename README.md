@@ -1,48 +1,56 @@
 # AIP-C01 Hands-on Labs
 
-Lab files for a hands-on study series for the **AWS Certified Generative AI Developer – Professional (AIP-C01)** exam. Each lab has a matching article on Medium that explains the concepts, walks through the steps and covers how the exam tests the topic.
+Companion repo for the **AIP-C01 Hands-on Labs** series on Medium: a skill-by-skill path to the **AWS Certified Generative AI Developer – Professional (AIP-C01)** exam, with hands-on labs and exam notes.
 
 > Independent study resource. Not affiliated with or endorsed by Amazon Web Services.
 
-## How to use this repo
+**Start with the Medium post "AIP-C01 Hands-on Labs: Start Here".** It explains how the series works and where to begin.
 
-1. Read the Medium article for the lab.
-2. Open the matching folder here for the sample data, scripts and commands.
-3. Run the lab in **us-west-2** unless the lab says otherwise.
-4. Follow the clean-up steps at the end of each lab to avoid ongoing charges.
+## How the series and this repo are organised
 
-## Services reference
+The series follows the official exam guide exactly: each **domain** has **tasks**, and each task has **skills**.
 
-[`SERVICES.md`](SERVICES.md) lists every AWS service used in the series: purpose, when to use it, when not to, and the exam wording that points to it.
+- **One Medium post per skill**, titled with its number (for example "AIP-C01 Skill 1.1.1: From Requirements to Architecture"), plus **one exam-notes post at the end of each task**.
+- **Notes posts** cover design skills; everything is in the post.
+- **Lab posts** have a folder here with the sample data and scripts.
 
-## Labs
+```
+domain-1/
+  task-1.1/                README: the task's posts, lab order, clean-up
+    skill-1.1.2-poc/       one folder per lab skill
+    skill-1.1.3-wa-lens/
+  task-1.2/
+    ...
+SERVICES.md                every AWS service used in the series
+```
 
-The series follows the official exam guide: each **domain** has **tasks**, and each task has **skills**. There is one Medium post per skill, plus exam notes at the end of each task. Skills that can be practised hands-on have a lab folder here.
+## Domain 1: Foundation Model Integration, Data Management and Compliance (31%)
 
-### Domain 1: Foundation Model Integration, Data Management and Compliance (31%)
+Six tasks, 28 skills and 34 posts. Work through the tasks in order.
 
-| Task | Skill | Lab | Folder |
+| Task | Title in the exam guide | Posts | Lab folders |
 | --- | --- | --- | --- |
-| 1.1 Analyze requirements and design GenAI solutions | 1.1.2 Prove it works: a GenAI proof of concept | ~35 min | [`domain-1/task-1.1/skill-1.1.2-poc`](domain-1/task-1.1/skill-1.1.2-poc) |
-| | 1.1.3 Review it with the Generative AI Lens | ~30 min | [`domain-1/task-1.1/skill-1.1.3-wa-lens`](domain-1/task-1.1/skill-1.1.3-wa-lens) |
-| 1.2 Select and configure FMs | 1.2.2 Switch models without code changes | ~40 min | [`domain-1/task-1.2/skill-1.2.2-model-switching`](domain-1/task-1.2/skill-1.2.2-model-switching) |
-| | 1.2.3 Resilient model access | ~40 min | [`domain-1/task-1.2/skill-1.2.3-resilience`](domain-1/task-1.2/skill-1.2.3-resilience) |
-| 1.3 to 1.6 | | _coming soon_ | |
-
-Skills without a lab (1.1.1, 1.2.1, 1.2.4) are covered as notes posts on Medium. Each task folder has a README listing all of its posts.
+| [1.1](domain-1/task-1.1) | Analyze requirements and design GenAI solutions | 1.1.1 notes · 1.1.2 lab · 1.1.3 lab · exam notes | [`skill-1.1.2-poc`](domain-1/task-1.1/skill-1.1.2-poc), [`skill-1.1.3-wa-lens`](domain-1/task-1.1/skill-1.1.3-wa-lens) |
+| [1.2](domain-1/task-1.2) | Select and configure FMs | 1.2.1 notes · 1.2.2 lab · 1.2.3 lab · 1.2.4 notes · exam notes | [`skill-1.2.2-model-switching`](domain-1/task-1.2/skill-1.2.2-model-switching), [`skill-1.2.3-resilience`](domain-1/task-1.2/skill-1.2.3-resilience) |
+| 1.3 | Implement data validation and processing pipelines for FM consumption | coming soon | |
+| 1.4 | Design and implement vector store solutions | coming soon | |
+| 1.5 | Design retrieval mechanisms for FM augmentation | coming soon | |
+| 1.6 | Implement prompt engineering strategies and governance for FM interactions | coming soon | |
 
 Domains 2–5 will follow the same layout (`domain-2/task-2.1/…`).
 
-## Prerequisites for all labs
+## Services reference
 
-- An AWS account with permission to use Amazon Bedrock and the services named in each lab
-- AWS CLI v2 (or AWS CloudShell)
-- Python 3.10+ with `boto3` for the Python labs
+[`SERVICES.md`](SERVICES.md) lists every AWS service used in the series: purpose, when to use it, when not to, and the exam wording that points to it. It grows as the series does.
 
-## Cost
+## Before your first lab
 
-Most labs cost under US$1 if you clean up the same day. Each lab states its estimate.
+- **Use us-west-2 (Oregon).** Every Domain 1 feature used in the labs is available there.
+- **Set a budget alert** in the AWS Billing console (for example US$10 a month). Most labs cost cents; a forgotten resource doesn't.
+- **Check model access** in us-west-2 for Amazon Nova 2 Lite and Nova Micro through the US inference profiles. Later labs say what else they need.
+- **Have a shell ready:** AWS CloudShell works for every lab, or AWS CLI v2 and Python 3.10+ with `boto3`.
+- **Clean up after every lab** unless the post says the next lab reuses the resources. Each task README lists the clean-up steps.
 
 ## License
 
-Code samples are provided under the MIT License. Article text and images remain the author's.
+Code samples are provided under the [MIT License](LICENSE). Article text and images remain the author's.
