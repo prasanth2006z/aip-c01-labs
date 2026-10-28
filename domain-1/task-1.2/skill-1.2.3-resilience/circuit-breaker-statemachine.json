@@ -1,0 +1,29 @@
+{
+  "Comment": "Lab D1 Task 1.2, skill 1.2.3: retry the primary model with backoff, then fall back to a second model.",
+  "StartAt": "CallPrimary",
+  "States": {
+    "CallPrimary": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::aws-sdk:bedrockruntime:converse",
+      "Parameters": {
+        "ModelId": "us.amazon.nova-2-lite-v1:0",
+        "Messages.$": "$.messages"
+      },
+      "Retry": [{
+        "ErrorEquals": ["BedrockRuntime.ThrottlingException"],
+        "IntervalSeconds": 2, "BackoffRate": 2, "MaxAttempts": 3, "JitterStrategy": "FULL"
+      }],
+      "Catch": [{ "ErrorEquals": ["States.ALL"], "Next": "CallFallback" }],
+      "End": true
+    },
+    "CallFallback": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::aws-sdk:bedrockruntime:converse",
+      "Parameters": {
+        "ModelId": "us.amazon.nova-micro-v1:0",
+        "Messages.$": "$.messages"
+      },
+      "End": true
+    }
+  }
+}

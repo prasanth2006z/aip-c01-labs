@@ -1,0 +1,10 @@
+[
+  {"q": "How many days do I have to return a hedge trimmer?", "any_of": [["14"]]},
+  {"q": "I opened a leaf blower. Is there a restocking fee, and how much?", "any_of": [["15%", "15 %", "15 percent"]]},
+  {"q": "How long can I return a registered impact driver?", "any_of": [["90"]]},
+  {"q": "Can I return a clearance item?", "any_of": [["final sale", "cannot", "can't", "not be returned", "no,"]]},
+  {"q": "How long does a refund take to arrive?", "any_of": [["5 business days", "five business days"]]},
+  {"q": "What warranty covers cordless tool batteries?", "any_of": [["2-year", "2 year", "two-year", "two year"]]},
+  {"q": "What is the standard return window for most items?", "any_of": [["30"]]},
+  {"q": "What must I do before returning a petrol lawn mower?", "any_of": [["drain"]]}
+]
