@@ -50,6 +50,21 @@ Where documents, state and vectors live.
 | **Amazon S3 Vectors** | Stores and queries vectors inside S3 at low cost | Large vector sets, cost first, moderate query rates | Highest query rates at lowest latency, or keyword plus vector search | "lowest-cost vector storage" | Skill 1.1.1 |
 | **Aurora PostgreSQL with pgvector** | Vectors next to relational data in PostgreSQL | The team already runs PostgreSQL; queries join vectors with tables | No relational need and the team wants a fully managed vector service | "already using PostgreSQL" | Skill 1.1.1 |
 
+## Data preparation and processing
+
+How data is checked, converted and cleaned before a model sees it.
+
+| Service | Purpose | Use it when | Not recommended when | Exam cue | First used |
+| --- | --- | --- | --- | --- | --- |
+| **AWS Glue Data Quality** | Data quality rules (DQDL) on tables in S3 or the Data Catalog, run on a schedule or in ETL jobs | Checking completeness, uniqueness and value ranges of tabular data before ingestion | Single unstructured documents arriving one at a time (Lambda) | "data quality rules", "least custom code" | Skill 1.3.1 |
+| **SageMaker Data Wrangler** | Visual data exploration and preparation with a data quality and insights report | Profiling a new dataset before deciding what to check or fix | Automated checks on every new batch (Glue Data Quality) | "explore", "profile", "visual" | Skill 1.3.1 |
+| **Amazon Transcribe** | Speech to text, as asynchronous jobs or streaming | Voicemails, call recordings and other audio a text model must use | Text already exists | "audio", "call recordings" | Skill 1.3.2 |
+| **Amazon Polly** | Text to speech | Creating spoken output (in this series, test audio) | Understanding audio (Transcribe) | "text to speech" | Skill 1.3.2 |
+| **Amazon Textract** | Extracts text, tables and form fields from scanned documents | Scanned forms, invoices and PDFs with tables | Understanding what a photo shows (a multimodal model) | "scanned documents", "forms", "tables" | Skill 1.3.2 |
+| **Bedrock Data Automation** | Managed extraction of structured fields from documents, images, audio and video | Many file types into one structured output with little custom code | One simple file type a single service already handles | "multimodal extraction", "least effort" | Skill 1.3.2 |
+| **SageMaker Processing** | Runs your own preprocessing code as a managed job on chosen instances | Large batches or long-running custom preprocessing | Small per-file work (Lambda) | "preprocess a large dataset", "custom code" | Skill 1.3.2 |
+| **Amazon Comprehend** | Pre-trained NLP: language, entities, key phrases, sentiment and PII | Detecting or masking PII and extracting entities without training a model | Rewriting or summarising text (a foundation model) | "detect PII", "extract entities" | Skill 1.3.4 |
+
 ## Observability and audit
 
 How you see what the application and the models are doing.

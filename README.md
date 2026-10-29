@@ -32,7 +32,7 @@ Six tasks, 28 skills and 34 posts. Work through the tasks in order.
 | --- | --- | --- | --- |
 | [1.1](domain-1/task-1.1) | Analyze requirements and design GenAI solutions | 1.1.1 notes · 1.1.2 lab · 1.1.3 lab · exam notes | [`skill-1.1.2-poc`](domain-1/task-1.1/skill-1.1.2-poc), [`skill-1.1.3-wa-lens`](domain-1/task-1.1/skill-1.1.3-wa-lens) |
 | [1.2](domain-1/task-1.2) | Select and configure FMs | 1.2.1 notes · 1.2.2 lab · 1.2.3 lab · 1.2.4 notes · exam notes | [`skill-1.2.2-model-switching`](domain-1/task-1.2/skill-1.2.2-model-switching), [`skill-1.2.3-resilience`](domain-1/task-1.2/skill-1.2.3-resilience) |
-| 1.3 | Implement data validation and processing pipelines for FM consumption | coming soon | |
+| [1.3](domain-1/task-1.3) | Implement data validation and processing pipelines for FM consumption | 1.3.1 notes · 1.3.2 lab · 1.3.3 lab · 1.3.4 lab · exam notes | [`skill-1.3.2-multimodal`](domain-1/task-1.3/skill-1.3.2-multimodal), [`skill-1.3.3-format-input`](domain-1/task-1.3/skill-1.3.3-format-input), [`skill-1.3.4-enhance-input`](domain-1/task-1.3/skill-1.3.4-enhance-input) |
 | 1.4 | Design and implement vector store solutions | coming soon | |
 | 1.5 | Design retrieval mechanisms for FM augmentation | coming soon | |
 | 1.6 | Implement prompt engineering strategies and governance for FM interactions | coming soon | |
