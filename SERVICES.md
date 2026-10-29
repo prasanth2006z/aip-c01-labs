@@ -37,6 +37,8 @@ The services around the model that receive requests and run the steps.
 | **AWS Lambda** | Runs code on demand with no servers to manage | Glue code that calls Bedrock; agent action groups; event handling | Work longer than 15 minutes, or always-on servers | "serverless", "event-driven" | Skill 1.1.1 |
 | **AWS Step Functions** | Orchestrates multi-step workflows with retries, branches, parallel steps and waits | Long or multi-service workflows, error handling, human approval | A single quick model call | "orchestrate", "human-in-the-loop" | Skill 1.1.1 |
 | **Amazon EventBridge** | Routes events between services and runs schedules | React when something happens (a document arrives) or run nightly jobs | Synchronous request and response | "when a file arrives", "on a schedule" | Skill 1.1.1 |
+| **Amazon EventBridge Scheduler** | Runs a target (such as Lambda) on a cron or rate schedule | Scheduled refreshes, nightly syncs, periodic evaluation | Reacting to an event as it happens (EventBridge rules, S3 events) | "scheduled", "nightly", "every hour" | Skill 1.4.5 |
+| **AWS Secrets Manager** | Stores and rotates credentials and API keys | Connector credentials, third-party API keys | Non-secret configuration (AppConfig, Parameter Store) | "store credentials securely", "rotate" | Skill 1.4.4 |
 
 ## Data and storage
 
@@ -49,6 +51,9 @@ Where documents, state and vectors live.
 | **OpenSearch Serverless (vector)** | Vector search plus keyword (hybrid) search, managed | Low-latency semantic or hybrid search at scale | Small or cost-first workloads: it has a minimum capacity charge | "hybrid search", "low latency at scale" | Skill 1.1.1 |
 | **Amazon S3 Vectors** | Stores and queries vectors inside S3 at low cost | Large vector sets, cost first, moderate query rates | Highest query rates at lowest latency, or keyword plus vector search | "lowest-cost vector storage" | Skill 1.1.1 |
 | **Aurora PostgreSQL with pgvector** | Vectors next to relational data in PostgreSQL | The team already runs PostgreSQL; queries join vectors with tables | No relational need and the team wants a fully managed vector service | "already using PostgreSQL" | Skill 1.1.1 |
+| **Amazon OpenSearch Service (vector, neural plugin)** | Managed OpenSearch clusters with k-NN (HNSW) vector search; the neural plugin calls Bedrock embedding models for you | Custom index design, per-domain indexes, hybrid search, tuning shards and HNSW | The team wants no cluster to size or tune (Serverless or Knowledge Bases) | "sharding", "ef_search", "neural search" | Skill 1.4.1 |
+| **Knowledge Bases custom data source** | Push and delete individual documents through the API (direct ingestion), no sync needed | Sources without a built-in connector; changes that must be searchable within seconds | A built-in connector (S3, Confluence, SharePoint, Salesforce, Web Crawler) already covers the source | "near real-time updates", "custom connector" | Skill 1.4.4 |
+| **Amazon Q Business** | Managed enterprise assistant with many data connectors and per-user permissions | A ready-made assistant over company content with little building | You're building your own GenAI application and need full control | "enterprise search assistant", "40+ connectors" | Skill 1.4.4 |
 
 ## Data preparation and processing
 

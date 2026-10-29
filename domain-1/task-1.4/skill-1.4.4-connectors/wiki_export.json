@@ -1,0 +1,10 @@
+[
+  {"id": "wiki-101", "space": "returns-ops", "title": "Processing a damaged-item return", "updated": "2026-03-02",
+   "body": "When a customer reports an item damaged in transit, ask for a photo of the item and the packaging. Do not ask the customer to ship the item back first. Approve a replacement or refund straight away and raise a carrier claim within 7 days using the order number."},
+  {"id": "wiki-102", "space": "returns-ops", "title": "Refund approval limits", "updated": "2026-01-12",
+   "body": "Support agents can approve refunds up to $200 without review. Refunds from $200 to $1,000 need a team lead. Anything above $1,000 goes to the finance queue and is usually decided within 2 business days."},
+  {"id": "wiki-103", "space": "returns-ops", "title": "Return labels during the holiday period", "updated": "2025-11-20",
+   "body": "From 15 November to 31 December, return labels are valid for 45 days instead of 14. This applies to all orders shipped in the US."},
+  {"id": "wiki-201", "space": "warehouse", "title": "Restocking returned power tools", "updated": "2026-02-18",
+   "body": "Returned power tools are inspected within 3 days. Tools with an opened battery seal are sold as refurbished. Tools with missing blade guards are scrapped and the supplier is charged."}
+]
