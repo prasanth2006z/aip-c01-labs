@@ -1,0 +1,47 @@
+{
+  "Comment": "Skill 1.5.5: classify a question, expand or decompose it, retrieve each query in parallel, merge and answer.",
+  "StartAt": "Classify",
+  "States": {
+    "Classify": {
+      "Type": "Task", "Resource": "arn:aws:states:::lambda:invoke", "OutputPath": "$.Payload",
+      "Parameters": {"FunctionName": "${QueryToolsArn}", "Payload": {"action": "classify", "question.$": "$.question"}},
+      "Retry": [{"ErrorEquals": ["States.TaskFailed"], "IntervalSeconds": 2, "MaxAttempts": 2, "BackoffRate": 2}],
+      "Next": "SimpleOrCompound"
+    },
+    "SimpleOrCompound": {
+      "Type": "Choice",
+      "Choices": [{"Variable": "$.kind", "StringEquals": "compound", "Next": "Decompose"}],
+      "Default": "Expand"
+    },
+    "Expand": {
+      "Type": "Task", "Resource": "arn:aws:states:::lambda:invoke", "OutputPath": "$.Payload",
+      "Parameters": {"FunctionName": "${QueryToolsArn}", "Payload": {"action": "expand", "question.$": "$.question"}},
+      "Next": "RetrieveEach"
+    },
+    "Decompose": {
+      "Type": "Task", "Resource": "arn:aws:states:::lambda:invoke", "OutputPath": "$.Payload",
+      "Parameters": {"FunctionName": "${QueryToolsArn}", "Payload": {"action": "decompose", "question.$": "$.question"}},
+      "Next": "RetrieveEach"
+    },
+    "RetrieveEach": {
+      "Type": "Map", "ItemsPath": "$.queries", "MaxConcurrency": 4, "ResultPath": "$.retrieved",
+      "ItemSelector": {"query.$": "$$.Map.Item.Value"},
+      "ItemProcessor": {
+        "ProcessorConfig": {"Mode": "INLINE"},
+        "StartAt": "Retrieve",
+        "States": {
+          "Retrieve": {
+            "Type": "Task", "Resource": "arn:aws:states:::lambda:invoke", "OutputPath": "$.Payload", "End": true,
+            "Parameters": {"FunctionName": "${QueryToolsArn}", "Payload": {"action": "retrieve", "query.$": "$.query"}}
+          }
+        }
+      },
+      "Next": "MergeAndAnswer"
+    },
+    "MergeAndAnswer": {
+      "Type": "Task", "Resource": "arn:aws:states:::lambda:invoke", "OutputPath": "$.Payload", "End": true,
+      "Parameters": {"FunctionName": "${QueryToolsArn}",
+                     "Payload": {"action": "merge_and_answer", "question.$": "$.question", "retrieved.$": "$.retrieved"}}
+    }
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {"id": "pol-general", "source": "returns-policy.md#general", "text": "General terms: customers may return most items within 30 days of delivery with proof of purchase. Refunds go to the original payment method within 5 business days. Items must be unused and in original packaging."},
+  {"id": "pol-garden", "source": "returns-policy.md#garden", "text": "Garden equipment (lawn mowers, hedge trimmers, leaf blowers): returns are accepted within 14 days only. A restocking fee of 15% applies to all opened items. Fuel-powered items must be drained before return."},
+  {"id": "pol-power", "source": "returns-policy.md#power-tools", "text": "Cordless power tools (drills, impact drivers, circular saws): returns are accepted within 90 days if the tool is registered online. No restocking fee applies. Batteries are covered by a separate 2-year warranty."},
+  {"id": "pol-clearance", "source": "returns-policy.md#clearance", "text": "Clearance items are final sale and cannot be returned."},
+  {"id": "ship-standard", "source": "shipping.md#standard", "text": "Standard delivery takes 3 to 5 business days. Orders placed before 2 pm ship the same day."},
+  {"id": "ship-freight", "source": "shipping.md#freight", "text": "Large garden equipment such as ride-on mowers ships by freight and takes 5 to 8 business days. Freight deliveries need a signature."},
+  {"id": "warranty-tools", "source": "warranty.md#power-tools", "text": "All power tools carry a 2-year limited warranty against manufacturing defects. The warranty does not cover blades or wear parts."},
+  {"id": "warranty-claim", "source": "warranty.md#claims", "text": "To make a warranty claim, contact support with the order number and a photo of the fault. Claims are answered within 2 business days."},
+  {"id": "parts-sku", "source": "parts.md#blades", "text": "Replacement blade HT-450-B fits the HT-450 hedge trimmer. Replacement blade HT-600-B fits the HT-600 and HT-650 models."},
+  {"id": "parts-battery", "source": "parts.md#batteries", "text": "The 18V battery pack BP-18-4Ah fits all 18V cordless tools. The charger CH-18 charges a 4Ah battery in 60 minutes."},
+  {"id": "account-refund-status", "source": "account.md#refunds", "text": "Customers can see refund status under Orders in their account. A refund shows as Processing until the bank confirms it."},
+  {"id": "stores-uk", "source": "uk-stores.md#returns", "text": "UK stores: customers can return items within 30 days under the Consumer Contracts Regulations. Faulty items can be returned within 6 months."}
+]

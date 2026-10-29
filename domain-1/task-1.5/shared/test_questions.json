@@ -1,0 +1,10 @@
+[
+  {"q": "How long can I return a hedge trimmer?", "answer": "pol-garden"},
+  {"q": "Is there a fee to return a drill?", "answer": "pol-power"},
+  {"q": "How quickly will my refund arrive?", "answer": "pol-general"},
+  {"q": "Which blade fits my HT-650?", "answer": "parts-sku"},
+  {"q": "How long does a ride-on mower take to arrive?", "answer": "ship-freight"},
+  {"q": "What do I need for a warranty claim?", "answer": "warranty-claim"},
+  {"q": "Can I send back something I bought on clearance?", "answer": "pol-clearance"},
+  {"q": "Where can I see if my refund went through?", "answer": "account-refund-status"}
+]
