@@ -1,0 +1,27 @@
+{
+  "Comment": "Skill 1.6.4: run every prompt test case in parallel and count the passes. Input: {\"version\": \"v2\", \"cases\": [...test_cases.json...]}",
+  "StartAt": "RunCases",
+  "States": {
+    "RunCases": {
+      "Type": "Map", "ItemsPath": "$.cases", "MaxConcurrency": 4, "ResultPath": "$.results",
+      "ItemSelector": {"version.$": "$.version", "case.$": "$$.Map.Item.Value"},
+      "ItemProcessor": {
+        "ProcessorConfig": {"Mode": "INLINE"},
+        "StartAt": "RunCase",
+        "States": {
+          "RunCase": {
+            "Type": "Task", "Resource": "arn:aws:states:::lambda:invoke", "OutputPath": "$.Payload", "End": true,
+            "Parameters": {"FunctionName": "${PromptQaArn}", "Payload.$": "$"},
+            "Retry": [{"ErrorEquals": ["States.TaskFailed"], "IntervalSeconds": 2, "MaxAttempts": 3, "BackoffRate": 2}]
+          }
+        }
+      },
+      "Next": "Summarise"
+    },
+    "Summarise": {
+      "Type": "Pass",
+      "Parameters": {"version.$": "$.version", "failed.$": "$.results[?(@.passed == false)].id"},
+      "End": true
+    }
+  }
+}

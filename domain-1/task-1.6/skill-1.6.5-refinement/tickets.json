@@ -1,0 +1,8 @@
+[
+  {"id": "T1", "ticket": "Bought a hedge trimmer on 3rd Oct, opened it, it's too heavy for me. Can I bring it back?", "eligible": true, "days": 9},
+  {"id": "T2", "ticket": "Leaf blower from Sept 20th, never used, still boxed. Want to return it.", "eligible": false, "days": 22},
+  {"id": "T3", "ticket": "Cordless drill I registered online, bought 1 August. Battery is fine but I don't need it now.", "eligible": true, "days": 72},
+  {"id": "T4", "ticket": "Impact driver bought on 15 August, didn't get round to registering it. Can I return it?", "eligible": false, "days": 58},
+  {"id": "T5", "ticket": "Mower from the clearance sale two days ago (10 Oct). Changed my mind.", "eligible": false, "days": 2},
+  {"id": "T6", "ticket": "Garden gloves ordered 25/09, wrong size. Return possible?", "eligible": true, "days": 17}
+]
