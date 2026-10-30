@@ -6,7 +6,7 @@ Companion repo for the **AIP-C01 Hands-on Labs** series on Medium: a skill-by-sk
 
 **Start with the Medium post "AIP-C01 Hands-on Labs: Start Here".** It explains how the series works and where to begin.
 
-**Looking for a specific post?** The [AIP-C01 Hands-on Labs: Series Catalog](https://medium.com/p/81666f507164) lists every domain, task and skill in exam-guide order, with a link to each post.
+**Looking for a specific post?** The [AIP-C01 Hands-on Labs: Contents](https://medium.com/p/81666f507164) lists every domain, task and skill in exam-guide order, like a book's table of contents, with a link to each post.
 
 ## How the series and this repo are organised
 
